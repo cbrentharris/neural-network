@@ -86,12 +86,10 @@ class NeuralNetwork:
 
                 total_error += self.loss_function(y_train[j], y_pred)
 
-                # backward propagation
                 error = self.loss_prime(y_train[j], y_pred)
                 for layer in reversed(self.layers):
                     error = layer.backward_propagate(error, learning_rate)
 
-            # calculate average error on all samples
             end = time.time()
             average_error = total_error / samples
             duration_in_seconds = end - start
